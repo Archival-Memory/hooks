@@ -54,7 +54,7 @@ process.stdin.on('end', async () => {
           userPrompt: userMessage,
           agentResponse: assistantMessage
         },
-      }),
+      })
     });
   }
 
