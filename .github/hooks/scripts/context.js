@@ -8,6 +8,7 @@
  */
 
 const hookEventName = process.argv[2];
+const repositoryId = require('./repository-id');
 
 let input = '';
 process.stdin.setEncoding('utf8');
@@ -22,6 +23,7 @@ process.stdin.on('end', async () => {
     },
     body: JSON.stringify({
       sessionId: session_id,
+      repositoryId,
       hookEventName,
     })
   }).then(res => res.json());
