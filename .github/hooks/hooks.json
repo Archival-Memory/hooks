@@ -3,28 +3,28 @@
     "SessionStart": [
       {
         "type": "command",
-        "command": "node scripts/session-start.js",
+        "command": "node scripts/context.js SessionStart",
         "cwd": ".github/hooks"
       }
     ],
     "UserPromptSubmit": [
       {
         "type": "command",
-        "command": "node scripts/user-prompt-submit.js",
+        "command": "node scripts/context.js UserPromptSubmit",
         "cwd": ".github/hooks"
       }
     ],
     "PreToolUse": [
       {
         "type": "command",
-        "command": "node scripts/pre-tool-use.js",
+        "command": "node scripts/update.js PreToolUse",
         "cwd": ".github/hooks"
       }
     ],
     "Stop": [
       {
         "type": "command",
-        "command": "node scripts/stop.js",
+        "command": "node scripts/update.js Stop",
         "cwd": ".github/hooks"
       }
     ]
