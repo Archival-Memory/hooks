@@ -22,14 +22,16 @@ process.stdin.on('end', async () => {
 
   let assistantMessage = '';
   let userMessage = '';
+  let timestamp = '';
 
   for (let i = events.length - 1; i >= 0; i -= 1) {
-    if (events[i].type === 'assistant.message') {
+    if (events[i].type === 'assistant.message' && events[i].data.content) {
       assistantMessage = events[i].data.content;
 
       for (let j = i - 1; j >= 0; j -= 1) {
         if (events[j].type === 'user.message') {
           userMessage = events[j].data.content;
+          timestamp = events[j].timestamp;
           break;
         }
       }
@@ -47,9 +49,11 @@ process.stdin.on('end', async () => {
       },
       body: JSON.stringify({
         sessionId: session_id,
+        hookEventName: 'PreToolUse',
         interaction: {
           userPrompt: userMessage,
           agentResponse: assistantMessage,
+          timestamp: timestamp,
         },
       }),
     });

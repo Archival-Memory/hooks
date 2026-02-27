@@ -17,14 +17,14 @@
     "PreToolUse": [
       {
         "type": "command",
-        "command": "node scripts/post-response.js",
+        "command": "node scripts/pre-tool-use.js",
         "cwd": ".github/hooks"
       }
     ],
     "Stop": [
       {
         "type": "command",
-        "command": "node scripts/post-response.js",
+        "command": "node scripts/stop.js",
         "cwd": ".github/hooks"
       }
     ]
