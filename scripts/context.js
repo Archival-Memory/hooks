@@ -15,7 +15,7 @@ process.stdin.setEncoding('utf8');
 process.stdin.on('data', chunk => { input += chunk; });
 process.stdin.on('end', async () => {
   const { session_id } = JSON.parse(input);
-  const { context } = await fetch(`${process.env.ARCHIVAL_API_BASE_URL}/context`, {
+  const { context } = await fetch(`https://api.archivalmemory.com/context`, {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${process.env.ARCHIVAL_API_KEY}`,

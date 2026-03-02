@@ -42,7 +42,7 @@ process.stdin.on('end', async () => {
   }
 
   if (userMessage && assistantMessage) {
-    await fetch(`${process.env.ARCHIVAL_API_BASE_URL}/update`, {
+    await fetch(`https://api.archivalmemory.com/update`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${process.env.ARCHIVAL_API_KEY}`,
