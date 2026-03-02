@@ -12,6 +12,19 @@ const fs = require('fs');
 const hookEventName = process.argv[2];
 const repositoryId = require('./repository-id');
 
+// Load ARCHIVAL_API_KEY from ~/.config/archival/.env if not already in env
+if (!process.env.ARCHIVAL_API_KEY) {
+  try {
+    const envFile = require('os').homedir() + '/.config/archival/.env';
+    const lines = fs.readFileSync(envFile, 'utf8').split('\n');
+    for (const line of lines) {
+      const [key, ...rest] = line.split('=');
+      if (key && rest.length) { process.env[key.trim()] = rest.join('=').trim(); }
+    }
+  } catch { /* file not found or unreadable */ }
+}
+const repositoryId = require('./repository-id');
+
 let input = '';
 process.stdin.setEncoding('utf8');
 process.stdin.on('data', chunk => { input += chunk; });
