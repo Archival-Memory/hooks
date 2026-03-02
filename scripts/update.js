@@ -23,7 +23,6 @@ if (!process.env.ARCHIVAL_API_KEY) {
     }
   } catch { /* file not found or unreadable */ }
 }
-const repositoryId = require('./repository-id');
 
 let input = '';
 process.stdin.setEncoding('utf8');
