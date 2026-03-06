@@ -22,6 +22,10 @@ if (!process.env.ARCHIVAL_API_KEY) {
   } catch { /* file not found or unreadable */ }
 }
 
+if (!process.env.ARCHIVAL_LINK_ID) {
+  process.stderr.write('[Archival] No agent link is active. Select a link in the Archival VS Code extension.\n');
+}
+
 let input = '';
 process.stdin.setEncoding('utf8');
 process.stdin.on('data', chunk => { input += chunk; });
